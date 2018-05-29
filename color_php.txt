@@ -1,0 +1,23 @@
+URL (master page in style part): <link href="{{url('/')}}/assets/fonts/colors/base-color.php?color={{$general->theme}}" rel="stylesheet">
+
+
+funtion in color.php: 
+
+
+<?php
+header ("Content-Type:text/css");
+$color = "#42475B"; // Change your Color Here
+
+function checkhexcolor($color) {
+    return preg_match('/^#[a-f0-9]{6}$/i', $color);
+}
+
+if( isset( $_GET[ 'color' ] ) AND $_GET[ 'color' ] != '' ) {
+    $color = "#".$_GET[ 'color' ];
+}
+
+if( !$color OR !checkhexcolor( $color ) ) {
+    $color = "#42475B";
+}
+
+?>
